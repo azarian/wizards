@@ -10,11 +10,9 @@ import java.util.regex.Pattern;
 import static wdp.regularexpressions.model.PredefinedRE.SET.a_word_character;
 
 /**
- * Created with IntelliJ IDEA.
  * User: nazaria
  * Date: 7/24/13
  * Time: 5:13 PM
- * To change this template use File | Settings | File Templates.
  */
 public class RE_Wizard {
     private Group result;

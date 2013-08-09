@@ -1,11 +1,9 @@
 package wdp.regularexpressions.model;
 
 /**
- * Created with IntelliJ IDEA.
  * User: nazaria
  * Date: 7/24/13
  * Time: 12:34 PM
- * To change this template use File | Settings | File Templates.
  */
 public abstract class CharacterSet extends RE{
 

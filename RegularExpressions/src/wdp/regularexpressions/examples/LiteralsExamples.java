@@ -3,14 +3,11 @@ package wdp.regularexpressions.examples;
 import wdp.regularexpressions.wizards.RE_Wizard;
 
 import static wdp.regularexpressions.model.PredefinedRE.SET.a_whitespace_character;
-import static wdp.regularexpressions.model.PredefinedRE.SET.a_word_character;
 
 /**
- * Created with IntelliJ IDEA.
  * User: azaria
  * Date: 09/08/13
  * Time: 07:26
- * To change this template use File | Settings | File Templates.
  */
 public class LiteralsExamples {
     public static void main(String[] args) {

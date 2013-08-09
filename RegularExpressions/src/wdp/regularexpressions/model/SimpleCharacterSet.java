@@ -22,7 +22,7 @@ public class SimpleCharacterSet extends CharacterSet {
 
     @Override
     public String toString() {
-        StringBuffer str = new StringBuffer();
+        StringBuilder str = new StringBuilder();
         str.append("[");
         if (operator == OPERATOR.NOT){
             str.append("^");

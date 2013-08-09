@@ -1,11 +1,9 @@
 package wdp.regularexpressions.model;
 
 /**
- * Created with IntelliJ IDEA.
  * User: nazaria
  * Date: 7/24/13
  * Time: 12:35 PM
- * To change this template use File | Settings | File Templates.
  */
 public class RangeCharacterSet extends CharacterSet {
     private String from,until;
@@ -20,12 +18,12 @@ public class RangeCharacterSet extends CharacterSet {
 
     @Override
     public String toString() {
-        StringBuffer str = new StringBuffer();
+        StringBuilder str = new StringBuilder();
         str.append("[");
         if (operator == OPERATOR.NOT){
             str.append("^");
         }
-        str.append(from + "-" + until);
+        str.append(from).append("-").append(until);
         if (operator == OPERATOR.AND){
             str.append("&&");
             str.append(otherSet.toString());

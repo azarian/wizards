@@ -1,11 +1,9 @@
  package wdp.regularexpressions.model;
 
 /**
- * Created with IntelliJ IDEA.
- * User: nazaria
+  * User: nazaria
  * Date: 7/30/13
  * Time: 1:42 PM
- * To change this template use File | Settings | File Templates.
  */
 public class PredefinedRE extends RE {
 
@@ -32,7 +30,7 @@ public class PredefinedRE extends RE {
 
     @Override
     public String toString() {
-        StringBuffer str = new StringBuffer();
+        StringBuilder str = new StringBuilder();
         str.append(set.re);
         if (quantifier != null){
             str.append(quantifier.toString());

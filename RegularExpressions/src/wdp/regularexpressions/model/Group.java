@@ -4,11 +4,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Created with IntelliJ IDEA.
  * User: nazaria
  * Date: 7/24/13
  * Time: 10:21 AM
- * To change this template use File | Settings | File Templates.
  */
 public class Group extends RE {
     private List<RE> res = new LinkedList<RE>();
@@ -19,7 +17,7 @@ public class Group extends RE {
 
     @Override
     public String toString() {
-        StringBuffer str = new StringBuffer();
+        StringBuilder str = new StringBuilder();
         if (res.size() > 1) str.append("(");
         for (RE re : res) {
             str.append(re.toString());

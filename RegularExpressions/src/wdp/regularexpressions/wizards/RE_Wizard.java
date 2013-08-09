@@ -1,4 +1,4 @@
-package wdp.regularexpressions;
+package wdp.regularexpressions.wizards;
 
 import wdp.regularexpressions.model.*;
 
@@ -59,6 +59,11 @@ public class RE_Wizard {
 
     }
     public class ContinueYourRegularExpression {
+        public SetQuantifier a_character_described_as(PredefinedRE.SET set ){
+            currentRE = new PredefinedRE(set);
+            return new SetQuantifier();
+
+        }
         public SetQuantifier a_fixed_string(String str){
             currentRE = new Literal(str);
             return new SetQuantifier();
@@ -135,14 +140,5 @@ public class RE_Wizard {
         }
     }
 
-    public static void main(String[] args) {
-        RE_Wizard re = new RE_Wizard();
-        String reStr = re.start().a_fixed_string("nadav").exactly_once().then().a_fixed_string("azaria").at_least(3L).for_example("nadavazariaazariaazaria").the_end();
-        System.out.println("reStr = " + reStr);
-        String s = re.start().any_character_in_the_range("A","Z").then().any_character_except_in_the_range("a","z").at_least(3).for_example("A333").the_end();
-        System.out.println("s = " + s);
-        String s1 = re.start().a_character_described_as(a_word_character).exactly_once().then().any_character_in_the_range("A", "Z").then().for_example("AA").the_end();
-        System.out.println("s1 = " + s1);
 
-    }
 }

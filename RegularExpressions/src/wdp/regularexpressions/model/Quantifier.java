@@ -5,7 +5,6 @@ package wdp.regularexpressions.model;
  * User: nazaria
  * Date: 7/24/13
  * Time: 4:31 PM
- * To change this template use File | Settings | File Templates.
  */
 public class Quantifier {
 
@@ -16,6 +15,12 @@ public class Quantifier {
         this.min = min;
         this.max = max;
     }
+
+    public Quantifier(long min) {
+        this.min = min;
+        this.max = Long.MAX_VALUE;
+    }
+
 
     @Override
     public String toString() {

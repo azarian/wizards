@@ -7,10 +7,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static wdp.regularexpressions.model.PredefinedRE.SET.a_word_character;
-
 /**
- * User: nazaria
  * Date: 7/24/13
  * Time: 5:13 PM
  */

@@ -36,19 +36,19 @@ public class RE_Wizard {
             return new SetQuantifier();
         }
         public SetQuantifier any_character_in(String characters){
-            currentRE = new SimpleCharacterSet(characters);
+            currentRE = new CharacterSet(new SimpleContent(characters,false));
             return new SetQuantifier();
         }
         public SetQuantifier any_character_except_in(String characters){
-            currentRE = new SimpleCharacterSet(characters,true);
+            currentRE = new CharacterSet(new SimpleContent(characters,true));
             return new SetQuantifier();
         }
         public SetQuantifier any_character_in_the_range(String fromCharacter, String untilCharacter){
-            currentRE = new RangeCharacterSet(fromCharacter,untilCharacter,false);
+            currentRE = new CharacterSet(new RangeContent(fromCharacter,untilCharacter,false));
             return new SetQuantifier();
         }
         public SetQuantifier any_character_except_in_the_range(String fromCharacter, String untilCharacter){
-            currentRE = new RangeCharacterSet(fromCharacter,untilCharacter,true);
+            currentRE = new CharacterSet(new RangeContent(fromCharacter,untilCharacter,true));
             return new SetQuantifier();
         }
 
@@ -64,11 +64,11 @@ public class RE_Wizard {
             return new SetQuantifier();
         }
         public SetQuantifier any_character_in_the_range(String fromCharacter, String untilCharacter){
-            currentRE = new RangeCharacterSet(fromCharacter,untilCharacter,false);
+            currentRE = new CharacterSet(new RangeContent(fromCharacter,untilCharacter,false));
             return new SetQuantifier();
         }
         public SetQuantifier any_character_except_in_the_range(String fromCharacter, String untilCharacter){
-            currentRE = new RangeCharacterSet(fromCharacter,untilCharacter,true);
+            currentRE = new CharacterSet(new RangeContent(fromCharacter,untilCharacter,true));
             return new SetQuantifier();
         }
         public ContinueYourRegularExpression then(){

@@ -5,24 +5,22 @@ package wdp.regularexpressions.model;
  * Date: 7/24/13
  * Time: 12:34 PM
  */
-public abstract class CharacterSet extends RE{
+public class CharacterSet extends RE{
+    CharacterSetContent content;
 
-    public enum OPERATOR{
-        NONE,
-        NOT,
-        AND,
-        OR
-
-    }
-    OPERATOR operator = OPERATOR.NONE;
-    CharacterSet otherSet;//relevant only with AND and OR operators.
-
-
-    public OPERATOR getOperator() {
-        return operator;
+    public CharacterSet(CharacterSetContent content) {
+        this.content = content;
     }
 
-    public void setOperator(OPERATOR operator) {
-        this.operator = operator;
+    @Override
+    public String toString() {
+        StringBuilder str = new StringBuilder();
+        str.append("[");
+        str.append(content);
+        str.append("]");
+        if (quantifier != null){
+            str.append(quantifier);
+        }
+        return str.toString();
     }
 }

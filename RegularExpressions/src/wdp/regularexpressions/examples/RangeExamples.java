@@ -1,5 +1,7 @@
 package wdp.regularexpressions.examples;
 
+import wdp.regularexpressions.model.CharacterSet;
+import wdp.regularexpressions.model.CompositeCharacterSetContent;
 import wdp.regularexpressions.wizards.RE_Wizard;
 
 /**

@@ -29,7 +29,6 @@ public class RE_Wizard {
         public SetQuantifier a_character_described_as(PredefinedRE.SET set ){
             currentRE = new PredefinedRE(set);
             return new SetQuantifier();
-
         }
         public SetQuantifier a_fixed_string(String str){
             currentRE = new Literal(str);
@@ -37,6 +36,11 @@ public class RE_Wizard {
         }
         public SetQuantifier any_character_in(String characters){
             currentRE = new CharacterSet(new SimpleContent(characters,false));
+            return new SetQuantifier();
+        }
+
+        public SetQuantifier any_character_in_group_defined_as(CharacterSetContent content){
+            currentRE = new CharacterSet(content);
             return new SetQuantifier();
         }
         public SetQuantifier any_character_except_in(String characters){
@@ -115,6 +119,25 @@ public class RE_Wizard {
             currentRE = null;
             return new ContinueYourRegularExpression();
         }
+
+    }
+    public static RangeContent range(String from, String until){
+        return new RangeContent(from,until,false);
+    }
+    public static RangeContent not_in_range(String from, String until){
+        return new RangeContent(from,until,true);
+    }
+    public static SimpleContent characters(String str){
+        return new SimpleContent(str,false);
+    }
+    public static SimpleContent not_in_characters(String str){
+        return new SimpleContent(str,true);
+    }
+    public static CompositeCharacterSetContent in_both(CharacterSetContent content1,CharacterSetContent content2){
+        return new CompositeCharacterSetContent(CompositeCharacterSetContent.OPERATOR.AND, content1, content2);
+    }
+    public static CompositeCharacterSetContent in_one_of(CharacterSetContent content1,CharacterSetContent content2){
+        return new CompositeCharacterSetContent(CompositeCharacterSetContent.OPERATOR.OR, content1, content2);
 
     }
     private void validateExamples() {

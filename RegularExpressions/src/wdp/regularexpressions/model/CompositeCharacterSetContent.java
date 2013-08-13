@@ -5,7 +5,7 @@ package wdp.regularexpressions.model;
  * Date: 10/08/13
  * Time: 21:54
  */
-public class CompositeCharacterSet extends RE{
+public class CompositeCharacterSetContent extends CharacterSetContent{
     public enum OPERATOR{
         AND,
         OR
@@ -15,7 +15,7 @@ public class CompositeCharacterSet extends RE{
     CharacterSetContent content1,content2;
 
 
-    public CompositeCharacterSet(OPERATOR operator, CharacterSetContent content1, CharacterSetContent content2) {
+    public CompositeCharacterSetContent(OPERATOR operator, CharacterSetContent content1, CharacterSetContent content2) {
         this.operator = operator;
         this.content1 = content1;
         this.content2 = content2;
@@ -33,9 +33,6 @@ public class CompositeCharacterSet extends RE{
         str.append("[");
         str.append(content2);
         str.append("]]");
-        if (quantifier != null){
-            str.append(quantifier);
-        }
         return str.toString();
 
     }

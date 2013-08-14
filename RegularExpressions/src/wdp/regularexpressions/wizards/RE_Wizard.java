@@ -12,14 +12,14 @@ import java.util.regex.Pattern;
  * Time: 5:13 PM
  */
 public class RE_Wizard {
-    private Group result;
+    private StringBuilder result;
     private RE currentRE;
     private List<String> examples;
 
 
 
     public StartCreatingRegularExpression start(){
-        result = new Group();
+        result = new StringBuilder();
         currentRE = null;
         examples = new LinkedList<String>();
         return new StartCreatingRegularExpression();
@@ -78,6 +78,10 @@ public class RE_Wizard {
         public ContinueYourRegularExpression then(){
             return this;
         }
+        public ContinueYourRegularExpression or(){
+            result.append("|");
+            return this;
+        }
         public ContinueYourRegularExpression for_example(String example){
             examples.add(example);
             return this;
@@ -109,13 +113,19 @@ public class RE_Wizard {
             return createQuantifier(from, until);
         }
         public ContinueYourRegularExpression then(){
-            result.addRE(currentRE);
+            result.append(currentRE);
+            currentRE = null;
+            return new ContinueYourRegularExpression();
+        }
+        public ContinueYourRegularExpression or(){
+            result.append(currentRE);
+            result.append("|");
             currentRE = null;
             return new ContinueYourRegularExpression();
         }
         private ContinueYourRegularExpression createQuantifier(long min_value, long maxValue) {
             currentRE.setQuantifier(new Quantifier(min_value,maxValue));
-            result.addRE(currentRE);
+            result.append(currentRE);
             currentRE = null;
             return new ContinueYourRegularExpression();
         }

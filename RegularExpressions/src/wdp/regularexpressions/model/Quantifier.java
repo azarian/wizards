@@ -23,6 +23,9 @@ public class Quantifier {
 
     @Override
     public String toString() {
+        if (min == 0 && max == 1){
+            return "?";
+        }
         if (min == max){
             return "{" + min + "}";
         }

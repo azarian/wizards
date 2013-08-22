@@ -26,6 +26,11 @@ public class RE_Wizard {
     }
 
     public class StartCreatingRegularExpression {
+        public ContinueYourRegularExpression start_group(){
+            result.append("(");
+            return new ContinueYourRegularExpression();
+        }
+
         public SetQuantifier a_character_described_as(PredefinedRE.SET set ){
             currentRE = new PredefinedRE(set);
             return new SetQuantifier();
@@ -58,6 +63,19 @@ public class RE_Wizard {
 
     }
     public class ContinueYourRegularExpression {
+        public ContinueYourRegularExpression start_group(){
+            result.append("(");
+            return new ContinueYourRegularExpression();
+        }
+        public SetQuantifier close_group(){
+            result.append(")");
+            return new SetQuantifier();
+        }
+        public SetQuantifier any_character_in(String characters){
+            currentRE = new CharacterSet(new SimpleContent(characters,false));
+            return new SetQuantifier();
+        }
+
         public SetQuantifier a_character_described_as(PredefinedRE.SET set ){
             currentRE = new PredefinedRE(set);
             return new SetQuantifier();
@@ -98,7 +116,10 @@ public class RE_Wizard {
         }
 
         public ContinueYourRegularExpression once_or_more(){
-            return createQuantifier(0L,Long.MAX_VALUE);
+            return createQuantifier(1L,Long.MAX_VALUE);
+        }
+        public ContinueYourRegularExpression no_more_then(long n){
+            return createQuantifier(0L,n);
         }
         public ContinueYourRegularExpression exactly_once(){
             return createQuantifier(1L,1L);
@@ -113,12 +134,19 @@ public class RE_Wizard {
             return createQuantifier(from, until);
         }
         public ContinueYourRegularExpression then(){
-            result.append(currentRE);
+            if (currentRE != null) result.append(currentRE);
             currentRE = null;
             return new ContinueYourRegularExpression();
         }
+        public ContinueYourRegularExpression for_example(String example){
+            if (currentRE != null)result.append(currentRE);
+            currentRE = null;
+            examples.add(example);
+            return new ContinueYourRegularExpression();
+
+        }
         public ContinueYourRegularExpression or(){
-            result.append(currentRE);
+            if (currentRE != null) result.append(currentRE);
             result.append("|");
             currentRE = null;
             return new ContinueYourRegularExpression();
